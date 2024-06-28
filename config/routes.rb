@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'notes/create'
+  get 'candles/create'
+  get 'heroes/index'
+  get 'heroes/show'
+  get 'heroes/new'
+  get 'heroes/create'
+  get 'heroes/edit'
+  get 'heroes/update'
+  get 'heroes/destroy'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
