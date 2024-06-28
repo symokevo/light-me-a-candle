@@ -7,7 +7,7 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 
 gem "bootstrap"
 gem "sassc-rails"
-
+gem "devise"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
