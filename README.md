@@ -23,10 +23,10 @@
   
 ### Running the Application
 * Navigate to the application folder and run the following commands
-  ```bundle install```
-  ```rails db:migrate```
-  ```npm install```
-  ```rails s```
+ *  ```bundle install```
+ * ```rails db:migrate```
+ * ```npm install```
+ * ```rails s```
 
 That's all. The app should be running in your system. 
 
@@ -38,6 +38,6 @@ Let's make this a beautiful gift for our HEROES.
 * Commit and create pull request
   
 ## Areas worth polishing
-* Testing
+* Integration and Unit Testing
 * UI 
 * Expansion Ideas 😉
