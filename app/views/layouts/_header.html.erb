@@ -1,7 +1,10 @@
 <header>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light py-4">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
     <div class="container">
-      <%= link_to "Light Me A Candle", root_path, class: "navbar-brand fw-bold", id: "logo" %>
+      <%= link_to root_path, class: "navbar-brand fw-bold", id: "logo" do %>
+        Light Me A Candle <i class="bi bi-fire" id="fire-icon"></i>
+      <% end %>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

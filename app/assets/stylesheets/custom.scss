@@ -1,0 +1,12 @@
+#fire-icon {
+    color: #FF4500; /* Orange-red color for the fire */
+    /* Optionally, you can add more styles to enhance the effect */
+    animation: flicker 1s infinite alternate;
+  }
+  
+  @keyframes flicker {
+    0% { color: #FF4500; } /* Orange-red */
+    50% { color: #FFD700; } /* Gold */
+    100% { color: #FF4500; } /* Orange-red */
+  }
+  
