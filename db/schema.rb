@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_28_045622) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_28_050043) do
+  create_table "candles", force: :cascade do |t|
+    t.integer "hero_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_candles_on_hero_id"
+    t.index ["user_id"], name: "index_candles_on_user_id"
+  end
+
+  create_table "heros", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.text "note"
+    t.integer "created_by_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_heros_on_created_by_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "hero_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_notes_on_hero_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,4 +52,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_045622) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "candles", "heros"
+  add_foreign_key "candles", "users"
+  add_foreign_key "heros", "created_bies"
+  add_foreign_key "notes", "heros"
+  add_foreign_key "notes", "users"
 end
