@@ -1,6 +1,6 @@
-#fire-icon {
+ /*Header*/
+  #fire-icon {
     color: #FF4500; /* Orange-red color for the fire */
-    /* Optionally, you can add more styles to enhance the effect */
     animation: flicker 1s infinite alternate;
   }
   
@@ -10,3 +10,14 @@
     100% { color: #FF4500; } /* Orange-red */
   }
   
+  #logo {
+    margin-right: 10px;
+    font-size: 1.7em;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+    &:hover {
+      color: #FF4500;
+      text-decoration: none;
+    }
+  }

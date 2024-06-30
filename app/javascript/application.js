@@ -3,5 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "popper"
 import "bootstrap"
-import "bootstrap-icons/font/bootstrap-icons.css";
 
