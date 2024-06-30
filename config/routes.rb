@@ -6,5 +6,10 @@ Rails.application.routes.draw do
     resources :notes, only: [:create]
   end
 
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions'
+  # }
+
+
   root 'heroes#index'
 end
