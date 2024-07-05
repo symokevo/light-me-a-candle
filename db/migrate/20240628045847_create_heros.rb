@@ -4,7 +4,7 @@ class CreateHeros < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :image
       t.text :note
-      t.references :created_by, null: false, foreign_key: true
+      t.references :created_by, null: false, foreign_key: { to_table: :users }
 
       t.timestamps
     end
