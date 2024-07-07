@@ -10,13 +10,13 @@ class HeroesController < ApplicationController
   end
 
   def new
-    @hero = Hero.new
+    @hero = current_user.heroes.build
   end
 
   def create
     @hero = current_user.heroes.build(hero_params)
     if @hero.save
-      redirect_to @hero, notice: 'Name was successfully added.'
+      redirect_to @hero, notice: 'Hero was successfully created.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class HeroesController < ApplicationController
 
   def update
     if @hero.update(hero_params)
-      redirect_to @hero, notice: 'Name was successfully updated.'
+      redirect_to @hero, notice: 'Hero was successfully updated.'
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class HeroesController < ApplicationController
 
   def destroy
     @hero.destroy
-    redirect_to heroes_url, notice: 'Name was successfully deleted.'
+    redirect_to heroes_url, notice: 'Hero was successfully deleted.'
   end
 
   private

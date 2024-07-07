@@ -1,9 +1,9 @@
-<%= form_for(@hero, url: heroes_path, html: { class: "needs-validation", novalidate: true }) do |form| %>
-  <% if @hero.errors.any? %>
+<%= form_with(model: hero, local: true, html: { class: "needs-validation", novalidate: true }) do |form| %>
+  <% if hero.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
-      <h4 class="alert-heading"><%= pluralize(@hero.errors.count, "error") %> prohibited this hero from being saved:</h4>
+      <h4 class="alert-heading"><%= pluralize(hero.errors.count, "error") %> prohibited this hero from being saved:</h4>
       <ul>
-        <% @hero.errors.full_messages.each do |message| %>
+        <% hero.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
