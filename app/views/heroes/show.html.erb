@@ -1,2 +1,56 @@
-<h1>Heroes#show</h1>
-<p>Find me in app/views/heroes/show.html.erb</p>
+<!-- app/views/heroes/show.html.erb -->
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center my-4">
+      <h1><%= @hero.name %></h1>
+      <p><%= @hero.note %></p>
+      <%= button_to 'Candle Count: ' + @hero.candles.count.to_s, hero_candles_path(@hero), method: :post, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= image_tag @hero.image.attached? ? url_for(@hero.image) : asset_path('flowers.png'), class: 'img-fluid' %>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-12">
+      <h2>Notes</h2>
+      <div id="notesCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @notes.each_with_index do |note, index| %>
+            <div class="carousel-item <%= 'active' if index.zero? %>">
+              <div class="d-block w-100 p-4">
+                <p><%= note.content %></p>
+                <p><small>Added by <%= note.created_by.email %> at <%= note.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#notesCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#notesCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="row my-4">
+      <div class="col-12">
+        <h2>Add a Note</h2>
+        <%= form_with url: hero_notes_path(@hero), method: :post, local: true do |form| %>
+          <div class="mb-3">
+            <%= form.text_area :note, class: "form-control", rows: 3, placeholder: "Write your note here..." %>
+          </div>
+          <%= form.submit 'Add Note', class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,13 +1,18 @@
 class CandlesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_hero
 
   def create
-    @dead_person = Hero.find(params[:hero_id])
-    @candle = @hero.candles.build(user: current_user)
+    @candle = @hero.candles.build
     if @candle.save
       redirect_to @hero, notice: 'Candle was successfully lit.'
     else
       redirect_to @hero, alert: 'Failed to light candle.'
     end
+  end
+
+  private
+
+  def set_hero
+    @hero = Hero.find(params[:hero_id])
   end
 end

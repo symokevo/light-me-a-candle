@@ -1,6 +1,4 @@
 class Hero < ApplicationRecord
-  require 'fastimage'
-
   self.table_name = 'heroes'
   belongs_to :created_by, class_name: 'User'
   has_many :candles, dependent: :destroy
@@ -9,10 +7,10 @@ class Hero < ApplicationRecord
   validates :name, presence: true
   validates :image, presence: true
 
+  has_one_attached :image
+
   before_validation :set_default_image, if: -> { image.blank? }
   after_create :add_initial_candle
-
-  include ImageUploader::Attachment(:image)
 
   private
 
@@ -21,6 +19,6 @@ class Hero < ApplicationRecord
   end
 
   def add_initial_candle
-    candles.create!(created_by: created_by)
+    candles.create!(user_id: created_by_id, created_by_id: created_by_id)
   end
 end
