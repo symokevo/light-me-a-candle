@@ -1,8 +1,5 @@
 class Hero < ApplicationRecord
-  self.table_name = 'heroes'
-  belongs_to :created_by, class_name: 'User'
-  has_many :candles, dependent: :destroy
-  has_many :notes, dependent: :destroy
+  belongs_to :created_by, class_name: 'User', foreign_key: 'created_by_id'
 
   validates :name, presence: true
   validates :image, presence: true
@@ -15,10 +12,10 @@ class Hero < ApplicationRecord
   private
 
   def set_default_image
-    self.image = File.open(Rails.root.join('app/assets/images/flowers.png')) if image.blank?
+    self.image.attach(io: File.open(Rails.root.join('app/assets/images/flowers.png')), filename: 'flowers.png') if image.blank?
   end
 
   def add_initial_candle
-    candles.create!(user_id: created_by_id, created_by_id: created_by_id)
+    update(candles: 1)
   end
 end

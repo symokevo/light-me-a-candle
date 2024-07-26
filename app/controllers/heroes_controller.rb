@@ -21,7 +21,7 @@ class HeroesController < ApplicationController
   end
 
   def new
-    @hero = current_user.heroes.build
+    @hero = Hero.new
   end
 
   def create
